@@ -12,6 +12,7 @@ export class TodoItemComponent implements OnInit {
   // This is done to avoid strict initialisation
   @Input() todo!: Todo;
   @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
+  @Output() todoMarkAsDone: EventEmitter<Todo> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -19,6 +20,11 @@ export class TodoItemComponent implements OnInit {
 
   onClick(todo: Todo ): void {
     this.todoDelete.emit(todo);
+  }
+
+  onMarkAsDone(todo: Todo) {
+    todo.active = !todo.active;
+    this.todoMarkAsDone.emit(todo);
   }
 
 }

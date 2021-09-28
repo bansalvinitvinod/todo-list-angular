@@ -1,7 +1,10 @@
 <div class="container">
     <h1 class="text-center">Todo List App</h1>
     <app-todo-add (todoAdd)="addTodo($event)"></app-todo-add>
-    <div *ngFor="let todo of todos">
-        <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-item>
+    <h4>Your Todos</h4>
+    <div *ngIf="todos.length!=0">
+        <div *ngFor="let todo of todos">
+            <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)" (todoMarkAsDone)="markAsDoneTodo($event)"></app-todo-item>
+        </div>
     </div>
 </div>
